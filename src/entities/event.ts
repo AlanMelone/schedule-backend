@@ -3,6 +3,7 @@ import {
   Column,
   Entity,
   JoinTable,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -36,7 +37,7 @@ export class Event extends BaseEntity {
   @ManyToOne(() => Lector, (lector) => lector.events)
   lector: Lector;
 
-  @ManyToOne(() => Group)
+  @ManyToMany(() => Group)
   @JoinTable()
   groups: Group[];
 }
