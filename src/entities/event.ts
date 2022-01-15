@@ -10,6 +10,7 @@ import {
 import { EventType } from './enums/event-type';
 import { Lector } from './lector';
 import { Group } from './group';
+import { Place } from './place';
 
 @Entity()
 export class Event extends BaseEntity {
@@ -25,10 +26,10 @@ export class Event extends BaseEntity {
   @Column({ nullable: true })
   remoteLink?: string;
 
-  @Column({ type: 'time with time zone' })
+  @Column({ type: 'timestamp with time zone' })
   startDate: Date;
 
-  @Column({ type: 'time with time zone' })
+  @Column({ type: 'timestamp with time zone' })
   endDate: Date;
 
   @Column({ default: EventType.Lecture })
@@ -36,6 +37,9 @@ export class Event extends BaseEntity {
 
   @ManyToOne(() => Lector, (lector) => lector.events)
   lector: Lector;
+
+  @ManyToOne(() => Place, (place) => place.events)
+  place: Place;
 
   @ManyToMany(() => Group)
   @JoinTable()

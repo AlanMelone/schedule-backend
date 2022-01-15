@@ -1,4 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Event } from './event';
 
 @Entity()
 export class Place extends BaseEntity {
@@ -13,4 +20,7 @@ export class Place extends BaseEntity {
 
   @Column({ nullable: true })
   auditorium?: string;
+
+  @OneToMany(() => Event, (event) => event.lector)
+  events: Event[];
 }
