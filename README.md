@@ -22,9 +22,26 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Pre-start actions
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+You should create ormconfig.json in the root directory with next example
+```
+{
+  "type": "postgres",
+  "host": <<your_host>>,
+  "port": 5432,
+  "username": <<your_db_username>>,
+  "password": <<your_db_password>>,
+  "database": <<your_db_name>>,
+  "synchronize": true,
+  "entities": ["dist/entities/*.js"],
+  "migrations": ["dist/migrations/*.js"],
+  "cli": {
+    "migrationsDir": "src/migrations",
+    "entitiesDir": "src/entities",
+  }
+}
+```
 
 ## Installation
 
