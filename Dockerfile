@@ -4,7 +4,6 @@ COPY package*.json ./
 RUN npm install --only=development
 RUN npm install typeorm -g
 RUN npm i -g rimraf
-RUN npm i -g ansi-styles
 COPY . .
 RUN npm run build
 FROM node:12.13-alpine as production
