@@ -23,5 +23,6 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           cd ~/projects/schedule-backend
+          eval `ssh-agent -s`
           git pull origin master
           sudo docker-compose up
