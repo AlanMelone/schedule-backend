@@ -3,7 +3,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install --only=development
 RUN npm install typeorm -g
-RUN npm i -g rimraf
 COPY . .
 RUN npm run build
 FROM node:12.13-alpine as production
