@@ -24,5 +24,6 @@ jobs:
         script: |
           cd ~/projects/schedule-backend
           eval `ssh-agent -s`
+          ssh-add ${{ secrets.SSH_KEY }}
           git pull origin master
           sudo docker-compose up
