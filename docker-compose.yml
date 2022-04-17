@@ -5,7 +5,7 @@ services:
     container_name: main
     build:
       context: .
-      target: development
+      target: production
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -14,7 +14,8 @@ services:
       - 9229:9229
     command: sh -c "
       sleep 10 &&
-      npm run start:migration && npm run start:prod"
+      npm run start:migration &&
+      npm run start:prod & sleep 10"
     env_file:
       - .env
     networks:
